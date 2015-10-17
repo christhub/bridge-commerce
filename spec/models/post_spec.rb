@@ -4,5 +4,5 @@ describe Post do
   it { should validate_presence_of :title }
   it { should validate_presence_of :content }
 
-  it { should belong_to :tag }
+  it { should have_many :tags }
 end

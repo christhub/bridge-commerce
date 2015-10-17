@@ -1,0 +1,33 @@
+<h1>Home</h1>
+
+posts:
+<% if @posts.any? %>
+<ul>
+  <% @posts.each do |post| %>
+  <li><%= link_to post.title, post_path(post) %></li>
+  <% end %>
+</ul>
+
+<% else %>
+  <p>
+    add a post! ha ha ha ha
+  </p>
+<% end %>
+
+tags:
+<% if @tags.any? %>
+<ul>
+  <% @tags.each do |tag| %>
+  <li><%= link_to tag.title, post_path(tag) %></li>
+  <% end %>
+</ul>
+
+<% else %>
+  <p>
+    add a tag! ha ha ha ha
+  </p>
+<% end %>
+
+
+<%= link_to "new post", new_post_path %>
+<%= link_to "new tag", new_tag_path %>

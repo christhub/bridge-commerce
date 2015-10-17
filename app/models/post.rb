@@ -2,5 +2,5 @@ class Post < ActiveRecord::Base
   validates :title, :presence => true
   validates :content, :presence => true
 
-  belongs_to :tag
+  has_many :tags
 end
