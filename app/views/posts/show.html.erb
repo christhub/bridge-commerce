@@ -3,3 +3,12 @@
   <%=@post.content%> <%=link_to 'edit post', edit_post_path %>
 </p>
 <span><%=@post.created_at%></span>
+<br>
+<span>tags:</span>
+</p>
+  <% @post.tags.each do |tag| %>
+    <%=tag.title%> <%= link_to 'remove tag', post_path(@post, tag, :delete_tag => true), :method => :patch %> 
+  <% end %>
+<p>
+  <hr>
+<%= render "addTag" %>

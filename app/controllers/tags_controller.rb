@@ -16,7 +16,7 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
-      redirect_to tags_path
+      redirect_to posts_path
     else
       render :new
     end
@@ -30,9 +30,16 @@ class TagsController < ApplicationController
   def update
     @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
-      redirect_to tags_path
+      redirect_to posts_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @tag = Tag.find(params[:id])
+    @tag.destroy
+    redirect_to tags_path
   end
 
   private

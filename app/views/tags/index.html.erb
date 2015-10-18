@@ -1,17 +1,1 @@
-<h1>Tags</h1>
-
-<% if @tags.any? %>
-<ul>
-  <% @tags.each do |tag| %>
-  <li><%= link_to tag.title, tag_path(tag) %></li>
-  <% end %>
-</ul>
-
-<% else %>
-  <p>
-    Add a tag! ha ha ha ha
-  </p>
-<% end %>
-
-
-<%= link_to "new tag", new_tag_path %>
+<%= render "/posts/index" %>
