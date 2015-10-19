@@ -7,7 +7,7 @@
 <span>tags:</span>
 </p>
   <% @post.tags.each do |tag| %>
-    <%=tag.title%> <%= link_to 'remove tag', post_path(@post, tag, :delete_tag => true), :method => :patch %> 
+    <%=tag.title%> <%= link_to 'remove tag', post_path(@post, tag, :delete_tag => true), :method => :patch %>
   <% end %>
 <p>
   <hr>

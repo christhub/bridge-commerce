@@ -1,11 +1,14 @@
 class TagsController < ApplicationController
-  def index
-    @tags = Tag.all
-  end
-
   def show
     @tag = Tag.find(params[:id])
-    render :show
+    # binding.pry
+    # binding.pry
+    if @tag.post_id
+      @post = Post.find(@tag.post_id)
+      render :show
+    else
+      render :show
+    end
   end
 
   def new
@@ -39,7 +42,7 @@ class TagsController < ApplicationController
   def destroy
     @tag = Tag.find(params[:id])
     @tag.destroy
-    redirect_to tags_path
+    redirect_to posts_path
   end
 
   private
