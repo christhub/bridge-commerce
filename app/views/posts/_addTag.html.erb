@@ -1,7 +1,9 @@
 <%=form_for @post do |f| %>
   <% @tags.each do |tag| %>
-    <%= f.radio_button(:tags, tag.id) %>
-    <%= f.label tag.title %> <br>
+    <%= f.check_box(:tags) %>
+    <%= f.label(:tags, tag.title) %> <br>
   <% end %>
     <%= f.submit('add tag') %>
 <% end %>
+
+<!-- ask how to do this -->
