@@ -5,9 +5,14 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <%= flash[:alert] %>
-  <%= flash[:notice] %>
-  <%= link_to 'home is where the heart is', posts_path %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <div class="text-center flash">
+    <%= flash[:alert] %>
+    <%= flash[:notice] %>
+    <%= link_to 'home is where the heart is', posts_path %>
+  </div>
+
+
 </head>
 <body>
 

@@ -1,33 +1,36 @@
-<h1>Home</h1>
+<div class="container text-center">
+  <h3><i class="fa fa-heart"></i></h3>
 
-posts:
-<% if @posts.any? %>
-<ul>
-  <% @posts.each do |post| %>
-  <li><%= link_to post.title, post_path(post) %></li>
+  posts:
+  <% if @posts.any? %>
+  <ul>
+    <% @posts.each do |post| %>
+    <ul><%= link_to post.title, post_path(post) %></ul>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>
+      add a post! ha ha ha ha
+    </p>
   <% end %>
-</ul>
 
-<% else %>
-  <p>
-    add a post! ha ha ha ha
-  </p>
-<% end %>
+  tags:
+  <% if @tags.any? %>
+  <ul>
+    <% @tags.each do |tag| %>
+    <ul><%= link_to tag.title, tag_path(tag) %></ul>
+    <% end %>
+  </ul>
 
-tags:
-<% if @tags.any? %>
-<ul>
-  <% @tags.each do |tag| %>
-  <li><%= link_to tag.title, tag_path(tag) %></li>
+  <% else %>
+    <p>
+      add a tag! ha ha ha ha
+    </p>
   <% end %>
-</ul>
-
-<% else %>
-  <p>
-    add a tag! ha ha ha ha
-  </p>
-<% end %>
 
 
-<%= link_to "new post", new_post_path %>
-<%= link_to "new tag", new_tag_path %>
+  <%= link_to "new post", new_post_path %>
+  <%= link_to "new tag", new_tag_path %>
+
+</div>

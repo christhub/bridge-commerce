@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'sqlite3'
 gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 
 group :development do
   gem 'byebug'

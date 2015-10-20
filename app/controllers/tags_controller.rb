@@ -3,12 +3,8 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
     # binding.pry
     # binding.pry
-    if @tag.post_id
-      @post = Post.find(@tag.post_id)
-      render :show
-    else
-      render :show
-    end
+    @post = @tag.posts
+    render :show
   end
 
   def new

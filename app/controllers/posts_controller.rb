@@ -6,6 +6,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+      # binding.pry
+    # binding.pry
     @tags = Tag.all
     render :show
   end
@@ -31,16 +33,16 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    # binding.pry
     if params[:delete_tag] == "true"
+      # binding.pry
       @tag = Tag.find(params[:format])
-      @tag.update(post_id: "") #NEEDS TO BE CHANGED FOR MANY TO MANY RELATIONSHIP
+      @tag.update(post_id: nil)
       redirect_to post_path(@post)
       flash[:notice] = "successfully removed"
     elsif @post.update(post_params)
-      tags = params[:post]
-      @tag = Tag.find(tags[:tags])
-      @tag.update(post_id: @post.id)
+      post_hash = params[:post]
+      @tag = Tag.find(post_hash[:tags])
+      @post.tags << @tag
       redirect_to post_path(@post)
       flash[:notice] = "successfully saved"
     else

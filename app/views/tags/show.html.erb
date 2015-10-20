@@ -1,7 +1,11 @@
 <h2><%=@tag.title%></h2>
 <h3>posts with this tag:</h3>
-<% if @tag.post_id != nil %>
-  <%= link_to @post.title, post_path(@post) %>
+<% if @post %>
+<% @post.each do |post|  %>
+  <ul>
+  <%= link_to post.title, post_path(post) %>  
+  </ul>
+<% end %>
 <% end %>
 <hr>
 <%= link_to 'delete tag', tag_path(@tag),
