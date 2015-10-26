@@ -1,0 +1,7 @@
+<div class="text-center">
+  <%= form_for @comment, url: post_comment_path do |c| %>
+    <%= c.label :content %><br>
+    <%= c.text_area :content %><br>
+    <%= c.submit %>
+  <% end %>
+</div>

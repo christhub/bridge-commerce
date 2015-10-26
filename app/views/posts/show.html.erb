@@ -12,6 +12,23 @@
     <% end %>
   <p>
     <hr>
-  <%= render "addTag" %>
+
+    <%= render 'addTag' %>
+    <hr>
+
+    <% if user_signed_in? %>
+    <%= render 'addComment' %>
+    <% end %>
+<br>
+<p>
+  Comments:
+</p>
+    <% if @comments.any? %>
+      <% @comments.each do |comment|  %>
+      <%= comment.content %> by <%= comment.user.name %> <%= link_to 'edit', edit_post_comment_path(@post,comment) %> <%= link_to 'delete', post_comment_path(@post,comment),
+                                                                                                                            :data => {:confirm => "Are you sure?",
+                                                                                                                                    :method => "delete"}  %>
+      <% end  %>
+    <% end %>
 
 </div>

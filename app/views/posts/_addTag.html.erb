@@ -1,11 +1,5 @@
-<!-- <%=form_for @post do |f| %> -->
-<%= form_tag(post_path, method: "patch")%>
-  <% @tags.each do |tag| %>
-    <%= f.check_box_tag 'vaga[tag_ids][]',
-    tag.id, (checked = true if form.object,tag_ids.include?(tag,id)) %>
-    <%= f.label 'vaga[tag_ids][][#{tag.id}]', tag.name %> <br>
-  <% end %>
+<%=form_for @post do |f| %>
+    <%= f.select :tags, Tag.all.collect { |t| [ t.title, t.id ]}, include_blank:true %>
+    <br>
     <%= f.submit('add tag') %>
 <% end %>
-
-<!-- ask how to do this -->
