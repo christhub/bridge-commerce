@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'sqlite3'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
+gem 'devise'
 
 group :development do
   gem 'byebug'
