@@ -25,9 +25,9 @@
 </p>
     <% if @comments.any? %>
       <% @comments.each do |comment|  %>
-      <%= comment.content %> by <%= comment.user.name %> <%= link_to 'edit', edit_post_comment_path(@post,comment) %> <%= link_to 'delete', post_comment_path(@post,comment),
+      <%= comment.content %> by <%= comment.user.name %> <% if user_signed_in? %><%= link_to 'edit', edit_post_comment_path(@post,comment) %> <%= link_to 'delete', post_comment_path(@post,comment),
                                                                                                                             :data => {:confirm => "Are you sure?",
-                                                                                                                                    :method => "delete"}  %>
+                                                                                                                                    :method => "delete"}  %> <% end %>
       <% end  %>
     <% end %>
 
