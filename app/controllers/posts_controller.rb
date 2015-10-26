@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   def update
     @user = current_user
     @post = Post.find(params[:id])
-    binding.pry
+    # binding.pry
     if params[:delete_tag] == "true"
       @tag = Tag.find(params[:format])
       @post.tags.delete(@tag)
