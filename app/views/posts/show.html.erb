@@ -13,5 +13,20 @@
   <p>
     <hr>
 
+    <%= render 'addTag' %>
+    <hr>
+
+    <% if user_signed_in? %>
+    <%= render 'addComment' %>
+    <% end %>
+<br>
+<p>
+  Comments:
+</p>
+    <% if @comments.any? %>
+      <% @comments.each do |comment|  %>
+      <%= comment.content %> by <%= comment.user.name %> <%= link_to 'edit', edit_post_comment_path(@post,comment) %>
+      <% end  %>
+    <% end %>
 
 </div>

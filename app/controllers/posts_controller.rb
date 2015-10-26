@@ -10,6 +10,8 @@ class PostsController < ApplicationController
       # binding.pry
     # binding.pry
     @tags = Tag.all
+    # @comments - Post.comments.build
+    @comments = @post.comments
     render :show
   end
 
@@ -33,17 +35,25 @@ class PostsController < ApplicationController
   end
 
   def update
+    @user = current_user
     @post = Post.find(params[:id])
+    binding.pry
     if params[:delete_tag] == "true"
-      # binding.pry
       @tag = Tag.find(params[:format])
-      @tag.update(post_id: nil)
+      @post.tags.delete(@tag)
       redirect_to post_path(@post)
       flash[:notice] = "successfully removed"
-    elsif @post.update(post_params)
-      post_hash = params[:post]
-      @tag = Tag.find(post_hash[:tags])
+    elsif post_params[:comments]
+      @comment = Comment.new(post_params[:comments])
+      @post.comments << @comment
+      @user.comments << @comment
+      @post.save
+      @user.save
+      redirect_to post_path(@post)
+    elsif post_params[:tags]
+      @tag = Tag.find(post_params[:tags])
       @post.tags << @tag
+      @post.save
       redirect_to post_path(@post)
       flash[:notice] = "successfully saved"
     else
@@ -59,6 +69,6 @@ class PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit(:title, :content, :tags).permit! if params[:tags]
+    params.require(:post).permit(:title, :content, :tags, :comments => [:content])
   end
 end
