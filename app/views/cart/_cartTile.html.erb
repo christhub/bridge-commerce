@@ -1,0 +1,14 @@
+<% if @items %>
+
+<%=@items.each do |item|%>
+<%= item.title %>
+<%= image_tag item.image.url(:small) %>
+<%end%>
+
+<% else %>
+
+<p>
+  Add something to your cart!
+</p>
+
+<% end %>
