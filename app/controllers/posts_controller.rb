@@ -43,6 +43,10 @@ class PostsController < ApplicationController
       @post.tags.delete(@tag)
       redirect_to post_path(@post)
       flash[:notice] = "successfully removed"
+    elsif @post.update(post_params)
+      @post.save
+      redirect_to post_path(@post)
+      flash[:notice] = "successfully saved"
     elsif post_params[:comments]
       @comment = Comment.new(post_params[:comments])
       @post.comments << @comment

@@ -1,26 +1,17 @@
 <div class="container text-center">
   <h2><%=@post.title%></h2>
   <p>
-    <%=@post.content%> <%=link_to 'edit post', edit_post_path %>
+    <%= image_tag @post.image.url(:listing) %><br>
+    <%=@post.content%>
   </p>
-  <p>
-    <%= image_tag @post.image.url(:listing) %>
-  </p>
-  <span><%=@post.created_at%></span>
+  <span>posted <%=time_ago_in_words(@post.created_at)%> ago</span>
   <br>
-  <%= link_to 'delete post', post_path(@post),
-                      :data => {:confirm => "Are you sure?",
-                              :method => "delete"} %>
-  <br>
+  <% if @post.tags.any? %>
   <span>tags:</span>
-  </p>
+  <% end  %>
     <% @post.tags.each do |tag| %>
       <%=tag.title%> <%= link_to 'remove tag', post_path(@post, tag, :delete_tag => true), :method => :patch %><br>
     <% end %>
-  <p>
-    <hr>
-
-    <%= render 'addTag' %>
     <hr>
 
     <% if user_signed_in? %>
@@ -28,14 +19,28 @@
     <% end %>
 <br>
 <p>
+  <% if @comments.any? %>
   Comments:
 </p>
-    <% if @comments.any? %>
+
       <% @comments.each do |comment|  %>
-      <%= comment.content %> by <%= comment.user.name %> <% if user_signed_in? %><%= link_to 'edit', edit_post_comment_path(@post,comment) %> <%= link_to 'delete', post_comment_path(@post,comment),
+      <%= comment.content %> by <%= comment.user.name %><br>
+      <span>posted <%=time_ago_in_words(comment.created_at)%> ago</span>
+      <% if user_signed_in? || current_user.admin? %><%= link_to 'edit', edit_post_comment_path(@post,comment) %> <%= link_to 'delete', post_comment_path(@post,comment),
                                                                                                                             :data => {:confirm => "Are you sure?",
-                                                                                                                                    :method => "delete"}  %> <% end %>
+                                                                                                                                  :method => "delete"}  %> <% end %>
       <% end  %>
     <% end %>
+
+  <hr>
+  <% if current_user.try(:admin?)  %>
+  <%= link_to 'delete post', post_path(@post),
+                      :data => {:confirm => "Are you sure?",
+                              :method => "delete"} %>
+  <p>
+   <%=link_to 'edit post', edit_post_path %>
+  </p>
+  <%= render 'addTag' %>
+  <% end %>
 
 </div>
