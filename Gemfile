@@ -11,6 +11,7 @@ gem 'sqlite3'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'devise'
+gem "paperclip", "~> 4.3"
 
 group :development do
   gem 'byebug'

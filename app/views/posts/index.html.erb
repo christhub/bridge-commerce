@@ -1,11 +1,12 @@
 <div class="container text-center">
-  <h3>a shopping site</h3>
-items:
+  <h3>Bridges</h3>
+bridges for sale:
 
   <div class="row">
     <%= render 'postTile' %>
   </div>
-  tags:
+
+  categories:
   <% if @tags.any? %>
   <ul>
     <% @tags.each do |tag| %>
@@ -15,12 +16,14 @@ items:
 
   <% else %>
     <p>
-      add a tag! ha ha ha ha
+      add a category
     </p>
   <% end %>
 
+<% if current_user.try(:admin?) %>
 
   <%= link_to "new post", new_post_path %>
   <%= link_to "new tag", new_tag_path %>
 
+<% end %>
 </div>
