@@ -1,20 +1,10 @@
 <div class="container text-center">
   <h3>a shopping site</h3>
+items:
 
-  posts:
-  <% if @posts.any? %>
-  <ul>
-    <% @posts.each do |post| %>
-    <ul><%= link_to post.title, post_path(post) %></ul>
-    <% end %>
-  </ul>
-
-  <% else %>
-    <p>
-      add a post! ha ha ha ha
-    </p>
-  <% end %>
-
+  <div class="row">
+    <%= render 'postTile' %>
+  </div>
   tags:
   <% if @tags.any? %>
   <ul>
