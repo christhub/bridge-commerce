@@ -3,9 +3,11 @@ class Cart < ActiveRecord::Base
   belongs_to :user
 
   def subtotal
+    subtotal = 0
     self.posts.each do |item|
-      
+      subtotal += item.price
     end
+    return subtotal
   end
 
 

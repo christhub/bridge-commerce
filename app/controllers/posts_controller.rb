@@ -58,10 +58,6 @@ class PostsController < ApplicationController
         cart.save
         redirect_to post_path(@post)
       end
-    elsif @post.update(post_params)
-      @post.save
-      redirect_to post_path(@post)
-      flash[:notice] = "successfully saved"
     elsif post_params[:comments]
       @comment = Comment.new(post_params[:comments])
       @post.comments << @comment
@@ -72,6 +68,10 @@ class PostsController < ApplicationController
     elsif post_params[:tags]
       @tag = Tag.find(post_params[:tags])
       @post.tags << @tag
+      @post.save
+      redirect_to post_path(@post)
+      flash[:notice] = "successfully saved"
+    elsif @post.update(post_params)
       @post.save
       redirect_to post_path(@post)
       flash[:notice] = "successfully saved"
