@@ -1,5 +1,11 @@
 <ul>
+  <% if @posts.any? %>
   <% @posts.each do |post| %>
   <ul><%= link_to post.title, post_path(post) %></ul>
+  <% end %>
+  <% else  %>
+    <p>
+      add something
+    </p>
   <% end %>
 </ul>

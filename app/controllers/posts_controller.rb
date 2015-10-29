@@ -62,13 +62,14 @@ class PostsController < ApplicationController
     end
   end
 
-  def delete
-    @post = Post.find(params[:post_id])
-    redirect_to post_path(@post)
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
   end
 
 private
   def post_params
-    params.require(:post).permit(:title, :content, :tags, :comments => [:content])
+    params.require(:post).permit(:title, :content, :tags, :image, :comments => [:content])
   end
 end

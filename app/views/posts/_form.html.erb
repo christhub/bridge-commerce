@@ -1,9 +1,12 @@
-<%= render "layouts/errors", :object => @post %>
+<div class="text-center container">
+  <%= render "layouts/errors", :object => @post %>
 
-<%= form_for @post do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
-  <%= f.submit %>
-<% end %>
+  <%= form_for @post do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+    <%= f.label :content %>
+    <%= f.text_field :content %><br>
+    <%= f.file_field :image %>
+    <%= f.submit %>
+  <% end %>
+</div>
