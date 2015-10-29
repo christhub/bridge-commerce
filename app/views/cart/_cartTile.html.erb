@@ -1,8 +1,9 @@
 <% if @items %>
-
-<%=@items.each do |item|%>
+<br>
+<%@items.each do |item|%>
+<%= image_tag item.image.url(:thumb) %>
 <%= item.title %>
-<%= image_tag item.image.url(:small) %>
+<strong>$<%= item.price %></strong><br><br>
 <%end%>
 
 <% else %>
