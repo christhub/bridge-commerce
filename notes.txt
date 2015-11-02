@@ -1,3 +1,6 @@
 - add payment api
 - emails
 - google maps api?
+- add tax
+- add shipping cost
+- location based

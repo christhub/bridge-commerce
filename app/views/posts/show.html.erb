@@ -1,8 +1,12 @@
 <div class="container text-center">
+
   <h2><%=@post.title%></h2>
   <p>
     <%= image_tag @post.image.url(:listing) %><br>
-    <%=@post.content%>
+    <%= @post.content %> <br>
+    $ <%= @post.price %> <br>
+    <%= link_to 'add to cart', post_path(@post, :add_cart => true), :method => :patch %><br>
+
   </p>
   <span>posted <%=time_ago_in_words(@post.created_at)%> ago</span>
   <br>
@@ -13,7 +17,6 @@
       <%=tag.title%> <%= link_to 'remove tag', post_path(@post, tag, :delete_tag => true), :method => :patch %><br>
     <% end %>
     <hr>
-
     <% if user_signed_in? %>
     <%= render 'addComment' %>
     <% end %>

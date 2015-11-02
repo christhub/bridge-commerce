@@ -2,5 +2,13 @@
   <h2>Bridge Cart:</h2>
 
   <%= render 'cartTile', cartTile: @items %>
+<hr>
+
+<p>
+  Subtotal: <strong> $ <%= @cart.subtotal %> </strong>
+  Tax:
+  Shipping Cost:
+  Total:
+</p>
 
 </div>

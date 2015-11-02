@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
 
   has_and_belongs_to_many :tags
   belongs_to :user
+  belongs_to :cart
   has_many :comments
 
   # accept_nested_attributes_for :comments, :allow_destroy => true

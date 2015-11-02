@@ -43,10 +43,21 @@ class PostsController < ApplicationController
       @post.tags.delete(@tag)
       redirect_to post_path(@post)
       flash[:notice] = "successfully removed"
-    elsif @post.update(post_params)
-      @post.save
-      redirect_to post_path(@post)
-      flash[:notice] = "successfully saved"
+    elsif params[:add_cart] == "true"
+      @user = current_user
+      @cart = current_user.cart
+      @post = Post.find(params[:id])
+      # binding.pry
+      if @cart
+        @cart.posts << @post
+        @post.save
+        redirect_to post_path(@post)
+      else
+        cart = Cart.create(user_id: current_user.id)
+        cart.posts << @post
+        cart.save
+        redirect_to post_path(@post)
+      end
     elsif post_params[:comments]
       @comment = Comment.new(post_params[:comments])
       @post.comments << @comment
@@ -57,6 +68,10 @@ class PostsController < ApplicationController
     elsif post_params[:tags]
       @tag = Tag.find(post_params[:tags])
       @post.tags << @tag
+      @post.save
+      redirect_to post_path(@post)
+      flash[:notice] = "successfully saved"
+    elsif @post.update(post_params)
       @post.save
       redirect_to post_path(@post)
       flash[:notice] = "successfully saved"
@@ -74,6 +89,6 @@ class PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit(:title, :content, :tags, :image, :comments => [:content])
+    params.require(:post).permit(:title, :content, :tags, :image, :price, :comments => [:content])
   end
 end

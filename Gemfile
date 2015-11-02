@@ -12,6 +12,8 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'devise'
 gem "paperclip", "~> 4.3"
+gem 'avalara'
+gem 'geocoder'
 
 group :development do
   gem 'byebug'
