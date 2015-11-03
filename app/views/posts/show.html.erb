@@ -5,7 +5,7 @@
     <%= image_tag @post.image.url(:listing) %><br>
     <%= @post.content %> <br>
     $ <%= @post.price %> <br>
-    <%= link_to 'add to cart', post_path(@post, :add_cart => true), :method => :patch %><br>
+    <%= link_to 'add to cart', post_path(@post, :add_cart => true), :method => :patch, :remote => :true %><br>
 
   </p>
   <span>posted <%=time_ago_in_words(@post.created_at)%> ago</span>
@@ -14,11 +14,13 @@
   <span>tags:</span>
   <% end  %>
     <% @post.tags.each do |tag| %>
-      <%=tag.title%> <%= link_to 'remove tag', post_path(@post, tag, :delete_tag => true), :method => :patch %><br>
+      <%=tag.title%>   <% if current_user.try(:admin?)  %> <%= link_to 'remove tag', post_path(@post, tag, :delete_tag => true), :method => :patch %> <% end %><br>
     <% end %>
     <hr>
     <% if user_signed_in? %>
-    <%= render 'addComment' %>
+    <div id="add-comment">
+      <%= link_to 'add a comment', post_path(@post), remote: true %>
+    </div>
     <% end %>
 <br>
 <p>
