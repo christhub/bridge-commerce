@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def index
     @posts = Post.all
     @tags = Tag.all
@@ -38,6 +37,7 @@ class PostsController < ApplicationController
     @user = current_user
     @post = Post.find(params[:id])
     # binding.pry
+    # binding.pry
     if params[:delete_tag] == "true"
       @tag = Tag.find(params[:format])
       @post.tags.delete(@tag)
@@ -51,7 +51,6 @@ class PostsController < ApplicationController
       if @cart
         @cart.posts << @post
         @post.save
-        redirect_to post_path(@post)
       else
         cart = Cart.create(user_id: current_user.id)
         cart.posts << @post
@@ -60,11 +59,15 @@ class PostsController < ApplicationController
       end
     elsif post_params[:comments]
       @comment = Comment.new(post_params[:comments])
+      respond_to do |format|
+        format.js
+        format.html {redirect_to post_path(@post)}
+      end
       @post.comments << @comment
       @user.comments << @comment
       @post.save
       @user.save
-      redirect_to post_path(@post)
+
     elsif post_params[:tags]
       @tag = Tag.find(post_params[:tags])
       @post.tags << @tag
