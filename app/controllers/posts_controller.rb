@@ -11,6 +11,10 @@ class PostsController < ApplicationController
     @tags = Tag.all
     # @comments - Post.comments.build
     @comments = @post.comments
+    @hash = Gmaps4rails.build_markers(@post) do |post, marker|
+      marker.lat post.latitude
+      marker.lng post.longitude
+    end
     render :show
   end
 

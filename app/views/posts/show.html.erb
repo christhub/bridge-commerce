@@ -16,6 +16,11 @@
     <% @post.tags.each do |tag| %>
       <%=tag.title%>   <% if current_user.try(:admin?)  %> <%= link_to 'remove tag', post_path(@post, tag, :delete_tag => true), :method => :patch %> <% end %><br>
     <% end %>
+    <br>
+    <div style='width: 800px;' class="text-center container">
+      <div id="map" style='width: 800px; height: 400px;'></div>
+    </div>
+
     <hr>
     <% if user_signed_in? %>
     <div id="add-comment">
@@ -49,3 +54,21 @@
   <% end %>
 
 </div>
+<script charset="utf-8">
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+    provider: {
+      
+  },
+    internal: {
+      id: 'map'
+      }
+  },
+    function(){
+      markers = handler.addMarkersmarkers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(15);
+  }
+  );
+</script>
