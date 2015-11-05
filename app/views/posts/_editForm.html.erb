@@ -1,14 +1,17 @@
-<%= render "layouts/errors", :object => @post %>
+<div class="container text-center">
+  <%= render "layouts/errors", :object => @post %>
 
-<%=form_for @post do |f| %>
- <%= f.label :title %>
- <%= f.text_field :title %><br>
- <%= f.label :content %>:<br>
- <%= f.text_area(:content, size: "24x6") %><br>
- <%= f.label :price %>
- <%= f.text_field :price %><br>
- <%= f.label :address %>
- <%= f.text_field :address %>
- <%= f.file_field :image %>
- <%= f.submit('submit') %>
- <% end %>
+  <%=form_for @post do |f| %>
+   <%= f.label :title %>
+   <%= f.text_field :title %><br>
+   <%= f.label :content %>:<br>
+   <%= f.text_area(:content, size: "24x6") %><br>
+   <%= f.label :price %>
+   <%= f.text_field :price %><br>
+   <%= f.label :address %>
+   <%= f.text_field :address %>
+   <%= f.file_field :image %>
+   <%= f.submit('submit') %>
+   <% end %>
+
+</div>

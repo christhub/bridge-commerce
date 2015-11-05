@@ -46,7 +46,9 @@
             <li><%= link_to 'sign up', new_user_registration_path %></li>
             <li><%= link_to 'sign in', new_user_session_path %></li>
           <% else %>
+            <% if current_user.cart %>
             <li> <%= link_to current_user.cart.item_count, cart_index_path %></li>
+            <% end %>
             <li><%= link_to current_user.name, edit_user_registration_path%></li>
             <li><%= link_to 'sign out', destroy_user_session_path, method: :delete %></li>
           <% end %>

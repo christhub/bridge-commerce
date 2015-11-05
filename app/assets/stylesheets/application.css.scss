@@ -1,8 +1,28 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Muli);
 // @import "font-awesome-sprockets";
 // @import "font-awesome";
 
-h3 {
-  font-family: 'Open Sans', sans-serif;
+.container {
+  font-family: 'Muli', sans-serif;
+}
+
+.index-jumbotron {
+  margin-top: -6%;
+  padding-bottom: 30%;
+  background-image: url("bammer.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.navbar {
+   background-color: transparent;
+   background: transparent;
+   border-color: transparent;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+    color: #fff;
+    text-align: center;
 }
