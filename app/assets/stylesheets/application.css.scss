@@ -1,19 +1,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url(https://fonts.googleapis.com/css?family=Muli);
-// @import "font-awesome-sprockets";
-// @import "font-awesome";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 .container {
   font-family: 'Muli', sans-serif;
 }
 
 .index-jumbotron {
-  margin-top: -6%;
-  padding-bottom: 30%;
-  background-image: url("bammer.gif");
+  margin-top: -7%;
+  padding-bottom: 15%;
+  background-image: url("banner.gif");
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 0%;
 }
 
 .navbar {
@@ -23,6 +24,12 @@
 }
 
 .jumbotron h1, .jumbotron .h1 {
+  color: #fff;
+  text-align: center;
+  font-family: 'Muli', sans-serif;
+}
+
+h2 {
   color: #fff;
   text-align: center;
   font-family: 'Muli', sans-serif;
@@ -48,4 +55,16 @@
 
 body {
   background-color: #FFFBE9;
+}
+
+.bridge-jumbo {
+  padding-top: 13%;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #00CC99;
+}
+
+.navbar-default .navbar-brand {
+    color: #00CC99;
 }
