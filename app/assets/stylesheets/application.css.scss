@@ -23,6 +23,29 @@
 }
 
 .jumbotron h1, .jumbotron .h1 {
+  color: #fff;
+  text-align: center;
+  font-family: 'Muli', sans-serif;
+}
+
+.image-link {
+  height: 320px;
+  width: 320px;
+  font-family: 'Muli', sans-serif;
+  p {
+    z-index: 1;
+    position: relative;
+    bottom: 20px;
     color: #fff;
-    text-align: center;
+  }
+}
+
+.image-container .image-link {
+  display: block;
+  margin-left: 5%;
+  margin-right: auto;
+}
+
+body {
+  background-color: #FFFBE9;
 }

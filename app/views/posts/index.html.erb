@@ -1,13 +1,12 @@
 <div class="jumbotron index-jumbotron">
-    <h1 class="bridge">bridges</h1>
+    <h1 class="bridge">Bridges</h1>
 </div>
-<div class="container text-center">
-  <h3>Bridges</h3>
-bridges for sale:
 
-  <div class="row">
-    <%= render 'postTile' %>
-  </div>
+<div class="row text-center image-container">
+  <%= render 'postTile' %>
+</div>
+
+<div class="container text-center bridge-index">
 
   categories:
   <% if @tags.any? %>
