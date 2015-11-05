@@ -5,7 +5,7 @@
 <hr>
 
 <p>
-  Subtotal: <strong> $ <%= @cart.subtotal %> </strong><br>
+  Subtotal: <strong> <%= number_to_currency(@cart.subtotal) %> </strong><br>
   Tax: <br>
   Shipping Cost: <br>
   Total: <br>

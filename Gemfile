@@ -15,12 +15,14 @@ gem "paperclip", "~> 4.3"
 gem 'avalara'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'stripe'
 
 group :development do
   gem 'byebug'
   gem 'web-console'
   gem 'spring'
   gem 'quiet_assets'
+  gem 'seed_dump'
 end
 
 group :test, :development do
