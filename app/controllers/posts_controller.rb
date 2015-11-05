@@ -90,8 +90,15 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    @user = current_user
+    # binding.pry
+    if params[:remove_item] = "true"
+      @user.cart.posts.delete(@post)
+      redirect_to cart_index_path
+    else
+      @post.destroy
+      redirect_to posts_path
+    end
   end
 
 private

@@ -4,8 +4,8 @@
     <h2 class="bridge">let us connect the gaps in your life</h2>
 </p>
 </div>
-<div class="categories text-center">
-  <span>categories</span>
+<div class="text-center" id="categories">
+  <span> <%= link_to 'categories', tags_path, remote: true, class:"tags-link" %> </span>
 </div>
 <div class="row text-center image-container">
   <%= render 'postTile' %>
