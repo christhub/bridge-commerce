@@ -24,7 +24,7 @@
 
       <%= @post.content %> <br>
       <%= number_to_currency(@post.price) %> <br>
-      <%= link_to 'add to cart', post_path(@post, :add_cart => true), :method => :patch, :remote => :true %><br>
+      <%= link_to 'add to cart', post_path(@post, :add_cart => true), :method => :patch%><br>
 
     </div>
       <hr>

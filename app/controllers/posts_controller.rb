@@ -59,6 +59,7 @@ class PostsController < ApplicationController
       if @cart
         @cart.posts << @post
         @post.save
+        redirect_to post_path(@post)
       else
         cart = Cart.create(user_id: current_user.id)
         cart.posts << @post
