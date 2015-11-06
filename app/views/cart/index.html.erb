@@ -7,7 +7,7 @@
 <div class="container">
   <div class="col-sm-8">
     Subtotal: <strong> <%= number_to_currency(@cart.subtotal) %> </strong><br>
-    Tax: <br>
+    Tax: <%= @tax.tax %><br>
     Shipping Cost: <br>
     Total: <br>
   </div>

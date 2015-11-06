@@ -4,6 +4,7 @@ class CartController < ApplicationController
       @user = current_user
       @cart = @user.cart
       @items = @user.cart.posts
+      @tax = Avalara.geographical_tax(@cart.latitude, @cart.longitude, 100)
     end
   end
 
