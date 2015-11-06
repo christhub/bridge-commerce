@@ -4,8 +4,9 @@
     <h2 class="bridge">let us connect the gaps in your life</h2>
 </p>
 </div>
-<div class="text-center" id="categories">
-  <span> <%= link_to 'categories', tags_path, remote: true, class:"tags-link" %> </span>
+<div class="text-center">
+  <%= link_to "Show Categories", posts_path, remote:true  %>
+  <span id="categories">   <%= render 'categories' %> </span>
 </div>
 <div class="row text-center image-container">
   <%= render 'postTile' %>
