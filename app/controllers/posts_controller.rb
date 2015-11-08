@@ -67,7 +67,6 @@ class PostsController < ApplicationController
       @user.comments << @comment
       @post.save
       @user.save
-
     elsif post_params[:tags]
       @tag = Tag.find(post_params[:tags])
       @post.tags << @tag
