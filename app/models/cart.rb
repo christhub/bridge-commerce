@@ -2,6 +2,9 @@ class Cart < ActiveRecord::Base
   has_many :posts
   belongs_to :user
 
+  geocoded_by :address
+  after_validation :geocode
+
   def subtotal
     subtotal = 0
     self.posts.each do |item|

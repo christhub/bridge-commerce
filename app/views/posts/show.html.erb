@@ -1,22 +1,26 @@
-<div class="container text-center">
+<div class="row">
+  <div class="container text-center">
+    <h2><%=@post.title%></h2>
+    <div class="col-md-6">
+      <p>
+        <%= image_tag @post.image.url(:listing) %><br>
+      </p>
+      <!-- <span>posted <%=time_ago_in_words(@post.created_at)%> ago</span> -->
+      <% if @post.tags.any? %>
+      <span>tags:</span>
+      <% end  %>
+        <% @post.tags.each do |tag| %>
+          <%=tag.title%>   <% if current_user.try(:admin?)  %> <%= link_to 'remove tag', post_path(@post, tag, :delete_tag => true), :method => :patch %> <% end %><br>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <div style='width: 800px;' class="text-center container">
+        <div id="map" style='width: 500px; height: 500px; margin-bottom:5%;'></div>
+      </div>
+    </div>
 
-  <h2><%=@post.title%></h2>
-  <p>
-    <%= image_tag @post.image.url(:listing) %><br>
-    <%= @post.content %> <br>
-    $ <%= @post.price %> <br>
-    <%= link_to 'add to cart', post_path(@post, :add_cart => true), :method => :patch, :remote => :true %><br>
-
-  </p>
-  <span>posted <%=time_ago_in_words(@post.created_at)%> ago</span>
-  <br>
-  <% if @post.tags.any? %>
-  <span>tags:</span>
-  <% end  %>
-    <% @post.tags.each do |tag| %>
-      <%=tag.title%>   <% if current_user.try(:admin?)  %> <%= link_to 'remove tag', post_path(@post, tag, :delete_tag => true), :method => :patch %> <% end %><br>
-    <% end %>
     <hr>
+<<<<<<< HEAD
     <% if user_signed_in? %>
     <div id="add-comment">
       <%= link_to 'add a comment', post_path(@post), remote: true %>
@@ -28,28 +32,50 @@
   <% if @comments.any? %>
   Comments:
 </p>
+=======
+    <div class="container">
+>>>>>>> 3df02040e9b516379e63b14ece82fd2a6a64995a
 
-      <% @comments.each do |comment|  %>
-      <%= comment.content %> by <%= comment.user.name %><br>
-      <span>posted <%=time_ago_in_words(comment.created_at)%> ago</span>
-      <% if user_signed_in? || current_user.admin? %><%= link_to 'edit', edit_post_comment_path(@post,comment) %> <%= link_to 'delete', post_comment_path(@post,comment),
-                                                                                                                            :data => {:confirm => "Are you sure?",
-                                                                                                                                  :method => "delete"}  %> <% end %>
-      <% end  %>
+      <%= @post.content %> <br>
+      <%= number_to_currency(@post.price) %> <br>
+      <%= link_to 'add to cart', post_path(@post, :add_cart => true), :method => :patch%><br>
+
+    </div>
+      <hr>
+      <% if user_signed_in? %>
+      <div id="add-comment">
+        <%= link_to 'add a comment', post_path(@post), remote: true %>
+      </div>
+      <% end %>
+  <br>
+  <p>
+    <% if @comments.any? %>
+    Comments:
+  </p>
+
+        <% @comments.each do |comment|  %>
+        <%= comment.content %> by <%= comment.user.name %><br>
+        <span>posted <%=time_ago_in_words(comment.created_at)%> ago</span>
+        <% if user_signed_in? || current_user.admin? %><%= link_to 'edit', edit_post_comment_path(@post,comment) %> <%= link_to 'delete', post_comment_path(@post,comment),
+                                                                                                                              :data => {:confirm => "Are you sure?",
+                                                                                                                                    :method => "delete"}  %> <% end %>
+        <% end  %>
+      <% end %>
+
+    <hr>
+    <% if current_user.try(:admin?)  %>
+    <%= link_to 'delete post', post_path(@post),
+                        :data => {:confirm => "Are you sure?",
+                                :method => "delete"} %>
+    <p>
+     <%=link_to 'edit post', edit_post_path %>
+    </p>
+    <%= render 'addTag' %>
     <% end %>
 
-  <hr>
-  <% if current_user.try(:admin?)  %>
-  <%= link_to 'delete post', post_path(@post),
-                      :data => {:confirm => "Are you sure?",
-                              :method => "delete"} %>
-  <p>
-   <%=link_to 'edit post', edit_post_path %>
-  </p>
-  <%= render 'addTag' %>
-  <% end %>
-
+  </div>
 </div>
+<<<<<<< HEAD
 
 <script>
   function initMap() {
@@ -59,3 +85,23 @@
     });
   }
 </script>
+=======
+  <script charset="utf-8">
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+      provider: {
+
+    },
+      internal: {
+        id: 'map'
+        }
+    },
+      function(){
+        markers = handler.addMarkersmarkers = handler.addMarkers(<%=raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(14);
+    }
+    );
+  </script>
+>>>>>>> 3df02040e9b516379e63b14ece82fd2a6a64995a

@@ -1,10 +1,18 @@
-<div class="container text-center">
-  <h3>Bridges</h3>
-bridges for sale:
+<div class="jumbotron index-jumbotron">
+<p class='bridge-jumbo'>
+    <h1 class="bridge">bridges</h1>
+    <h2 class="bridge">let us connect the gaps in your life</h2>
+</p>
+</div>
+<div class="text-center">
+  <%= link_to "Show Categories", posts_path, remote:true  %>
+  <span id="categories">   <%= render 'categories' %> </span>
+</div>
+<div class="row text-center image-container">
+  <%= render 'postTile' %>
+</div>
 
-  <div class="row">
-    <%= render 'postTile' %>
-  </div>
+<div class="container text-center bridge-index">
 
   categories:
   <% if @tags.any? %>

@@ -1,14 +1,27 @@
-<div class="text-center">
+<div class="text-center container">
   <h2>Bridge Cart:</h2>
 
   <%= render 'cartTile', cartTile: @items %>
 <hr>
 
-<p>
-  Subtotal: <strong> $ <%= @cart.subtotal %> </strong><br>
-  Tax: <br>
-  Shipping Cost: <br>
-  Total: <br>
-</p>
+<div class="container">
+  <div class="col-sm-8">
+    Subtotal: <strong> <%= number_to_currency(@cart.subtotal) %> </strong><br>
+    Tax: <%= @tax.tax %><br>
+    Shipping Cost: <br>
+    Total: <br>
+  </div>
+  <div class="col-sm-4">
+    <p>
+      calculate shipping and tax:
+    </p>
+    <%= render 'locationForm' %>
+    <% if @cart.address %>
+      <%= @cart.address %>
+    <% end %>
+  </div>
+</div>
+
+
 
 </div>

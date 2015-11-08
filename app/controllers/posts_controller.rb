@@ -2,6 +2,10 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @tags = Tag.all
+    # respond_to do |format|
+    #   format.js
+    #   format.html {redirect_to posts_path}
+    # end
   end
 
   def show
@@ -11,6 +15,10 @@ class PostsController < ApplicationController
     @tags = Tag.all
     # @comments - Post.comments.build
     @comments = @post.comments
+    @hash = Gmaps4rails.build_markers(@post) do |post, marker|
+      marker.lat post.latitude
+      marker.lng post.longitude
+    end
     render :show
   end
 
@@ -51,6 +59,7 @@ class PostsController < ApplicationController
       if @cart
         @cart.posts << @post
         @post.save
+        redirect_to post_path(@post)
       else
         cart = Cart.create(user_id: current_user.id)
         cart.posts << @post
@@ -85,12 +94,19 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    @user = current_user
+    # binding.pry
+    if params[:remove_item] = "true"
+      @user.cart.posts.delete(@post)
+      redirect_to cart_index_path
+    else
+      @post.destroy
+      redirect_to posts_path
+    end
   end
 
 private
   def post_params
-    params.require(:post).permit(:title, :content, :tags, :image, :price, :comments => [:content])
+    params.require(:post).permit(:title, :content, :tags, :image, :price, :address, :latitude, :longitude, :comments => [:content])
   end
 end

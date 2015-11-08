@@ -1,11 +1,14 @@
-<ul>
-  <% if @posts.any? %>
-  <% @posts.each do |post| %>
-  <ul><%= link_to post.title, post_path(post) %></ul>
-  <% end %>
-  <% else  %>
-    <p>
-      there is nothing
-    </p>
-  <% end %>
-</ul>
+<% if @posts.any? %>
+  <div class="bridge-index">
+    <% @posts.each do |post| %>
+      <div class="col-md-6 image-link">
+        <%= link_to image_tag(post.image.url(:medium)), post_path(post) %>
+        <p class="image-title"> <%= post.title %> </p>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>
+    there is nothing
+  </p>
+<% end %>

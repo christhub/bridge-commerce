@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :comment, :except => [:index, :show]
   end
   resources :tags, :except => [:index]
+  resources :charges
 
   root 'posts#index'
 end

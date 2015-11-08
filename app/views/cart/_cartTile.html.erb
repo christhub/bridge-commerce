@@ -3,7 +3,11 @@
 <%@items.each do |item|%>
 <%= image_tag item.image.url(:thumb) %>
 <%= item.title %>
-<strong>$<%= item.price %></strong><br><br>
+<strong><%=number_to_currency(item.price)%></strong>
+<%= link_to 'delete', post_path(item, :remove_item => true),
+                    :data => {:confirm => "Are you sure?",
+                            :method => "delete"} %>
+<br><br>
 <%end%>
 
 <% else %>
