@@ -6,6 +6,8 @@
         <%= image_tag @post.image.url(:listing) %><br>
       </p>
       <!-- <span>posted <%=time_ago_in_words(@post.created_at)%> ago</span> -->
+      <%= @post.content %> <br>
+
       <% if @post.tags.any? %>
       <span>tags:</span>
       <% end  %>
@@ -20,7 +22,6 @@
     </div>
 
     <hr>
-<<<<<<< HEAD
     <% if user_signed_in? %>
     <div id="add-comment">
       <%= link_to 'add a comment', post_path(@post), remote: true %>
@@ -32,9 +33,7 @@
   <% if @comments.any? %>
   Comments:
 </p>
-=======
     <div class="container">
->>>>>>> 3df02040e9b516379e63b14ece82fd2a6a64995a
 
       <%= @post.content %> <br>
       <%= number_to_currency(@post.price) %> <br>
@@ -61,6 +60,7 @@
                                                                                                                                     :method => "delete"}  %> <% end %>
         <% end  %>
       <% end %>
+    <% end %>
 
     <hr>
     <% if current_user.try(:admin?)  %>
@@ -75,8 +75,6 @@
 
   </div>
 </div>
-<<<<<<< HEAD
-
 <script>
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -85,23 +83,22 @@
     });
   }
 </script>
-=======
-  <script charset="utf-8">
-    handler = Gmaps.build('Google');
-    handler.buildMap({
-      provider: {
 
-    },
-      internal: {
-        id: 'map'
-        }
-    },
-      function(){
-        markers = handler.addMarkersmarkers = handler.addMarkers(<%=raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        handler.getMap().setZoom(14);
-    }
-    );
-  </script>
->>>>>>> 3df02040e9b516379e63b14ece82fd2a6a64995a
+<script charset="utf-8">
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+    provider: {
+
+  },
+    internal: {
+      id: 'map'
+      }
+  },
+    function(){
+      markers = handler.addMarkersmarkers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(14);
+  }
+  );
+</script>
