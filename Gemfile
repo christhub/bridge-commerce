@@ -23,6 +23,7 @@ group :development do
   gem 'spring'
   gem 'quiet_assets'
   gem 'seed_dump'
+  gem 'rails_12factor'
 end
 
 group :test, :development do
@@ -34,3 +35,5 @@ end
 group :test do
   gem 'shoulda-matchers'
 end
+
+ruby "2.2.0"

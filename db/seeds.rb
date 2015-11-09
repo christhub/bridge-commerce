@@ -1,12 +1,33 @@
+User.create!([
+  {name: "christian", email: "christian.lei1@gmail.com", encrypted_password: "$2a$10$D0/svyrC5auQ6YVDb/k/o..lWA2g9ksofl1468FVuJVi4HblWhB1K", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 9, current_sign_in_at: "2015-11-02 05:25:29", last_sign_in_at: "2015-11-02 03:48:49", current_sign_in_ip: "::1", last_sign_in_ip: "::1", admin: true, latitude: nil, longitude: nil},
+  {name: "christian", email: "test@test.com", encrypted_password: "$2a$10$mqODPkQl9nXm8IWOz2qjTegDSMpK/Zk3ZvT9vzPPKSKVJ/NteAgcG", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-11-02 05:28:25", last_sign_in_at: "2015-11-02 05:28:25", current_sign_in_ip: "::1", last_sign_in_ip: "::1", admin: nil, latitude: nil, longitude: nil}
+])
+Cart.create!([
+  {user_id: nil},
+  {user_id: nil},
+  {user_id: 1},
+  {user_id: 2}
+])
+Comment.create!([
+  {content: "dsfaadf", user_id: 1, post_id: 3},
+  {content: "this is a comment", user_id: 1, post_id: 6},
+  {content: "hello", user_id: 2, post_id: 9}
+])
 Post.create!([
-  {title: "Gateshead Millennium Bridge", content: "This is a tilt bridge that looks similar to a winking eye when you look at it open so boats can pass undeneath", user_id: nil, image_file_name: "10845537694_e76ea27e6a.jpg", image_content_type: "image/jpeg", image_file_size: 174912, image_updated_at: "2015-11-05 19:28:37", cart_id: nil, price: 2000, latitude: 54.9697667, longitude: -1.5991776, address: "Gateshead Millennium Bridge "},
-  {title: "Brooklyn Bridge", content: "Connects Brooklyn to Lower Manhattan, a historic suspension bridge", user_id: nil, image_file_name: "10468.jpg", image_content_type: "image/jpeg", image_file_size: 49288, image_updated_at: "2015-11-05 20:13:45", cart_id: nil, price: 2500, latitude: 40.7060855, longitude: -73.9968643, address: "brooklyn bridge, new york, ny"},
-  {title: "SF Bay Bridge", content: "A suspension and self anchored cable stay bridge crossing the bay from SF to Oakland.", user_id: nil, image_file_name: "tumblr_nw8sygCKX41qczcfzo1_500.jpg", image_content_type: "image/jpeg", image_file_size: 71244, image_updated_at: "2015-11-05 22:05:23", cart_id: nil, price: 2500, latitude: 37.7982799, longitude: -122.3778182, address: "SF Oakland Bay Bridge, San Francisco"},
-  {title: "Hawthorne Bridge", content: "Bridge connecting SE Portland to Downtown across the Willamette River", user_id: nil, image_file_name: "tumblr_nle8u30olk1ts00t9o1_500.jpg", image_content_type: "image/jpeg", image_file_size: 108069, image_updated_at: "2015-11-05 19:28:27", cart_id: nil, price: 1044, latitude: 45.5132416, longitude: -122.6709838, address: "hawthorne bridge, Portland, OR 97214"},
-  {title: "Golden Gate Bridge", content: "Suspension bridge connecting the Presidio of San Francisco to Marin County over the golden gate", user_id: nil, image_file_name: "51mOtleqFOL.jpg", image_content_type: "image/jpeg", image_file_size: 54102, image_updated_at: "2015-11-05 19:28:46", cart_id: nil, price: 124, latitude: 37.8199286, longitude: -122.4782551, address: "golden gate bridge, san francisco, ca"},
-  {title: "Tower Bridge", content: "Bridge crossing River Thames to connect London to Southbank, not the London bridge", user_id: nil, image_file_name: "3957289179_037a33fa3c.jpg", image_content_type: "image/jpeg", image_file_size: 251781, image_updated_at: "2015-11-05 23:32:49", cart_id: nil, price: 1400, latitude: 51.5054564, longitude: -0.0753565, address: "Tower Bridge London UK"}
+  {title: "Hawthorne Bridge", content: "Truss Bridge with a Vertical Lift connecting downtown with SE portland", user_id: nil, image_file_name: "Hawthorne_Bridge.jpg", image_content_type: "image/jpeg", image_file_size: 2795915, image_updated_at: "2015-10-29 23:23:58", cart_id: 3, price: 1000},
+  {title: "Golden Gate Bridge", content: "A suspension bridge that facilitates getting people from SF to marin", user_id: nil, image_file_name: "sea-city-mountains-landmark.jpg", image_content_type: "image/jpeg", image_file_size: 9508880, image_updated_at: "2015-10-29 22:22:24", cart_id: 4, price: 1500},
+  {title: "Tilikum Crossing", content: "This is a bike, transit and pedestrian bridge that links SE portland to SW Waterfront", user_id: nil, image_file_name: "6a00d8341c86d053ef01b8d0642d99970c-500wi.jpg", image_content_type: "image/jpeg", image_file_size: 32828, image_updated_at: "2015-10-29 23:56:25", cart_id: 4, price: 1250}
+])
+Post::HABTM_Tags.create!([
+  {tag_id: 5, post_id: 10},
+  {tag_id: 5, post_id: 11},
+  {tag_id: 5, post_id: 9}
 ])
 Tag.create!([
-  {title: "Suspension"},
-  {title: "Truss Bridge"}
+  {title: "bridge"}
+])
+Tag::HABTM_Posts.create!([
+  {tag_id: 5, post_id: 10},
+  {tag_id: 5, post_id: 11},
+  {tag_id: 5, post_id: 9}
 ])
