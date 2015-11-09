@@ -7,7 +7,6 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'sqlite3'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'devise'
@@ -29,6 +28,7 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'launchy'
+  gem 'sqlite3'
   gem 'pry'
 end
 
