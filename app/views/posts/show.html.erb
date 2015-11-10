@@ -3,9 +3,10 @@
     <h2><%=@post.title%></h2>
     <div class="col-md-6">
       <p>
-        <% @post.photos.each do |photo|  %>
-          <%= image_tag photo.image.url(:listing) %><br>
-        <% end %>
+        <%  %>
+        <!-- @post.photos.each do |photo|  -->
+          <%= link_to image_tag(@post.photos.first.image.url(:listing)), post_path(open_modal: true), remote: true, id: "bridge-pic", :data => {:toggle => "modal", :target => "#myModal"} %><br>
+        <% %>
       </p>
       <!-- <span>posted <%=time_ago_in_words(@post.created_at)%> ago</span> -->
       <%= @post.content %> <br>
@@ -82,6 +83,25 @@
 
   </div>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
