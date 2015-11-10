@@ -1,7 +1,7 @@
 <% if params[:add_photo] == "true" %>
   $('#add-photo').html("<%= j render(partial: 'addPhoto') %>");
 <% elsif params[:open_modal] == "true" %>
-  $('#myModal').modal(options);
+  $('#myModal').modal('show');
 <% else %>
   $('#add-comment').html("<%= j render(partial: 'addComment') %>");
 <% end %>

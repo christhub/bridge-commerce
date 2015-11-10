@@ -5,8 +5,9 @@
       <p>
         <%  %>
         <!-- @post.photos.each do |photo|  -->
-          <%= link_to image_tag(@post.photos.first.image.url(:listing)), post_path(open_modal: true), remote: true, id: "bridge-pic", :data => {:toggle => "modal", :target => "#myModal"} %><br>
+          <%= link_to image_tag(@post.photos.first.image.url(:listing)), post_path(open_modal: true), remote: true %><br>
         <% %>
+        <!-- , id: "bridge-pic", :data => {:toggle => "modal", :target => "#myModal"} -->
       </p>
       <!-- <span>posted <%=time_ago_in_words(@post.created_at)%> ago</span> -->
       <%= @post.content %> <br>
