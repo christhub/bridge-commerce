@@ -2,8 +2,13 @@
   <div class="bridge-index">
     <% @posts.each do |post| %>
       <div class="col-md-6 image-link">
-        <%= link_to post.title, post_path(post) %>
-        <!-- <p class="image-title"> <%= post.title %> </p> -->
+        <% if !post.photos.empty? %>
+          <%= link_to image_tag(post.photos.first.image.url(:medium)), post_path(post) %>
+          <p class="image-title"> <%= post.title %> </p>
+        <% else %>
+          <%= link_to post.title, post_path(post) %>
+        <% end %>
+
       </div>
     <% end %>
   </div>
@@ -12,4 +17,3 @@
     there is nothing
   </p>
 <% end %>
-<!-- link_to image_tag(post.image.url(:medium)), post_path(post) -->

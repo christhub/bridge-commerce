@@ -3,8 +3,9 @@
     <h2><%=@post.title%></h2>
     <div class="col-md-6">
       <p>
-        <%= %><br>
-        <!-- image_tag @post.image.url(:listing)  -->
+        <% @post.photos.each do |photo|  %>
+          <%= image_tag photo.image.url(:listing) %><br>
+        <% end %>
       </p>
       <!-- <span>posted <%=time_ago_in_words(@post.created_at)%> ago</span> -->
       <%= @post.content %> <br>
