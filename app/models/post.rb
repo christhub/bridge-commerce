@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :cart
   has_many :comments
-  has_many :images, :dependent => :destroy
+  has_many :photos, :dependent => :destroy
 
 
 end

@@ -1,1 +1,5 @@
-$('#add-comment').html("<%= j render(partial: 'addComment') %>");
+<% if params[:add_photo] == "true" %>
+  $('#add-photo').html("<%= j render(partial: 'addPhoto') %>");
+<% else %>
+  $('#add-comment').html("<%= j render(partial: 'addComment') %>");
+<% end %>

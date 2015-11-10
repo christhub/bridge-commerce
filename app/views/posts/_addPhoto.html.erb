@@ -1,0 +1,6 @@
+<%= form_for (@post), :html => { :multipart => true } do |f| %>
+ <%= f.label :title %>
+ <%= f.text_field :title %>
+ <%= file_field_tag "photos[]", type: :file, multiple: true, class: "form-control" %>
+ <%= f.submit('submit') %>
+<% end %>

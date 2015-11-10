@@ -44,7 +44,7 @@
       <hr>
       <% if user_signed_in? %>
       <div id="add-comment">
-        <%= link_to 'add a comment', post_path(@post), remote: true %>
+        <%= link_to 'add a comment', post_path(add_comment: true), remote: true %>
       </div>
       <% end %>
   <br>
@@ -70,6 +70,11 @@
                                 :method => "delete"} %>
     <p>
      <%=link_to 'edit post', edit_post_path %>
+
+   <div id="add-photo">
+    <%= link_to 'add a photo', post_path(add_photo: true), remote: true %>
+   </div>
+
     </p>
     <%= render 'addTag' %>
     <% end %>

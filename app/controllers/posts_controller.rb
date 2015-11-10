@@ -89,10 +89,10 @@ class PostsController < ApplicationController
       flash[:notice] = "successfully saved"
     elsif @post.update(post_params)
       # binding.pry
-      if post_params[:image]
+      if params[:photos]
         # binding.pry
-        params[:image].each do |image|
-          @post.images.create(image: post_params[:image])
+        params[:photos].each do |image|
+          @post.photos.create(image: image)
         end
       end
       @post.save
@@ -119,6 +119,6 @@ class PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit(:title, :content, :tags, :price, :image, :address, :latitude, :longitude, :comments => [:content])
+    params.require(:post).permit(:title, :content, :tags, :price, :photos, :address, :latitude, :longitude, :comments => [:content])
   end
 end
