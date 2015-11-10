@@ -30,6 +30,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      if params[:images]
+        params[:images].each do |image|
+          @post.images.create(image: image)
+        end
+      end
       redirect_to posts_path
     else
       render :new
@@ -83,6 +88,13 @@ class PostsController < ApplicationController
       redirect_to post_path(@post)
       flash[:notice] = "successfully saved"
     elsif @post.update(post_params)
+      # binding.pry
+      if post_params[:image]
+        # binding.pry
+        params[:image].each do |image|
+          @post.images.create(image: post_params[:image])
+        end
+      end
       @post.save
       redirect_to post_path(@post)
       flash[:notice] = "successfully saved"
@@ -107,6 +119,6 @@ class PostsController < ApplicationController
 
 private
   def post_params
-    params.require(:post).permit(:title, :content, :tags, :image, :price, :address, :latitude, :longitude, :comments => [:content])
+    params.require(:post).permit(:title, :content, :tags, :price, :image, :address, :latitude, :longitude, :comments => [:content])
   end
 end

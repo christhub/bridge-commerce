@@ -3,7 +3,8 @@
     <h2><%=@post.title%></h2>
     <div class="col-md-6">
       <p>
-        <%= image_tag @post.image.url(:listing) %><br>
+        <%= %><br>
+        <!-- image_tag @post.image.url(:listing)  -->
       </p>
       <!-- <span>posted <%=time_ago_in_words(@post.created_at)%> ago</span> -->
       <%= @post.content %> <br>
