@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   resources :tags, :except => [:index]
   resources :charges
+  resources :photos, :only => [:index, :destroy, :show]
 
   root 'posts#index'
 end

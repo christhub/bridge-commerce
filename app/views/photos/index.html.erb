@@ -1,0 +1,8 @@
+<div class="container text-center">
+  <% @photos.each do |photo| %>
+    <%= link_to image_tag(photo.image.url(:listing)), photo_path(photo), remote: true, class: "display-photo" %> <br>
+  <div id="delete-photo">
+    <%= render partial: 'deletePhoto', locals: {photo: photo}  %>
+  </div>
+  <% end %>
+</div>
