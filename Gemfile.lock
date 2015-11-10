@@ -53,6 +53,12 @@ GEM
       sass (>= 3.3.0)
     builder (3.2.2)
     byebug (6.0.2)
+    capybara (2.5.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -74,10 +80,16 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     font-awesome-sass (4.4.0)
       sass (>= 3.2)
     geocoder (1.2.12)
@@ -194,6 +206,11 @@ GEM
       activesupport (~> 4)
     shoulda-matchers (3.0.0)
       activesupport (>= 4.0.0)
+    simplecov (0.10.0)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slop (3.6.0)
     spring (1.4.0)
     sprockets (3.4.0)
@@ -226,6 +243,8 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -234,8 +253,10 @@ DEPENDENCIES
   avalara
   bootstrap-sass
   byebug
+  capybara
   coffee-rails
   devise
+  factory_girl_rails
   font-awesome-sass
   geocoder
   gmaps4rails
@@ -251,6 +272,7 @@ DEPENDENCIES
   sass-rails
   seed_dump
   shoulda-matchers
+  simplecov
   spring
   sqlite3
   stripe
