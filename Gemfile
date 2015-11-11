@@ -23,6 +23,7 @@ group :development do
   gem 'quiet_assets'
   gem 'seed_dump'
   gem 'rails_12factor'
+  gem "better_errors"
 end
 
 group :test, :development do
