@@ -1,7 +1,7 @@
 <% if @items %>
 <br>
 <%@items.each do |item|%>
-<%= image_tag item.image.url(:thumb) %>
+<%= image_tag item.photos.first.image.url(:thumb) %>
 <%= item.title %>
 <strong><%=number_to_currency(item.price)%></strong>
 <%= link_to 'delete', post_path(item, :remove_item => true),

@@ -32,10 +32,8 @@
     <% end %>
 <br>
 
-<p>
-  <% if @comments.any? %>
-  Comments:
-</p>
+
+
     <div class="container">
 
       <%= @post.content %> <br>
@@ -43,6 +41,10 @@
       <%= link_to 'add to cart', post_path(@post, :add_cart => true), :method => :patch%><br>
 
     </div>
+  <p>
+    <% if @comments.any? %>
+    Comments:
+  </p>
       <hr>
       <% if user_signed_in? %>
       <div id="add-comment">
@@ -120,7 +122,7 @@
             <% end %>
             ...
           </div>
-        <% end %> 
+        <% end %>
           <!-- Controls -->
           <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
