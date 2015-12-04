@@ -16,6 +16,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'stripe'
 gem 'aws-sdk'
+gem 'dotenv-rails'
 
 group :development do
   gem 'byebug'
