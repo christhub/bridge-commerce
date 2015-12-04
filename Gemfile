@@ -15,6 +15,7 @@ gem 'avalara'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'stripe'
+gem 'aws-sdk', '~> 2'
 
 group :development do
   gem 'byebug'
