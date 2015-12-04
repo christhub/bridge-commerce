@@ -5,8 +5,8 @@
 </p>
 </div>
 <div class="text-center">
-  <%= link_to "Show Categories", posts_path, remote:true  %>
-  <span id="categories">   <%= render 'categories' %> </span>
+  <!-- <%= link_to "Show Categories", posts_path, remote:true  %>
+  <span id="categories">   <%= render 'categories' %> </span> -->
 </div>
 <div class="row text-center image-container">
   <%= render 'postTile' %>
@@ -14,6 +14,9 @@
 
 <div class="container text-center bridge-index">
 
+
+
+<% if current_user.try(:admin?) %>
   categories:
   <% if @tags.any? %>
   <ul>
@@ -27,9 +30,6 @@
       add a category
     </p>
   <% end %>
-
-<% if current_user.try(:admin?) %>
-
   <%= link_to "new post", new_post_path %>
   <%= link_to "new tag", new_tag_path %>
   <%= link_to "edit photos", photos_path %>
